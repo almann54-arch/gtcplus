@@ -1,0 +1,592 @@
+
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Global Trend | Главная</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F7; /* светло-серый фон */
+            color: #1A1A1A;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            padding: 20px 0;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #1A1A1A;
+        }
+        .logo span {
+            color: #D4AF37;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-links a {
+            color: #1A1A1A;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.25s;
+        }
+        .nav-links a:hover {
+            color: #D4AF37;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F0F0F2 100%);
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #B8860B;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #1A1A1A 30%, #D4AF37 80%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            font-size: 20px;
+            color: #4A4A4A;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background-color: #D4AF37;
+            color: #1A1A1A;
+            padding: 14px 36px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+        .btn-primary:hover {
+            background-color: transparent;
+            border-color: #D4AF37;
+            color: #D4AF37;
+        }
+        .btn-outline {
+            border: 1px solid #D4AF37;
+            padding: 14px 36px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #D4AF37;
+            transition: 0.3s;
+        }
+        .btn-outline:hover {
+            background-color: #D4AF37;
+            color: #1A1A1A;
+        }
+
+        /* Benefits */
+        .benefits {
+            padding: 80px 0;
+            background-color: #FFFFFF;
+        }
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 56px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+        .section-title span {
+            color: #D4AF37;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+        }
+        .card {
+            background: #FEFEFE;
+            padding: 32px 24px;
+            border-radius: 24px;
+            text-align: center;
+            border: 1px solid #E0E0E0;
+            transition: transform 0.25s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-color: #D4AF37;
+        }
+        .card-icon {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #1A1A1A;
+        }
+        .card p {
+            color: #555;
+            font-size: 15px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: #F0F0F2;
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid #E0E0E0;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        .cta h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #1A1A1A;
+        }
+        .cta p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            color: #4A4A4A;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 48px 0 24px;
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 38px;
+            }
+            .header .container {
+                flex-direction: column;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .cta h2 {
+                font-size: 30px;
+            }
+        }
+        
+        /* AI Consultant Widget */
+        .ai-chatbot {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+       .chat-toggle { 
+    width: 70px; 
+    height: 70px; 
+    background-color: #D4AF37; 
+    background-image: url('doctor.png'); /* Путь к фото врача */
+    background-size: cover; 
+    background-position: center;
+    border-radius: 50%; 
+    cursor: pointer; 
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2); 
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+    font-size: 0; /* Прячем текст/робота, если он там остался */
+
+        }
+        .chat-toggle:hover { transform: scale(1.1); }
+
+/* Окно чата (убедитесь, что эти стили есть) */
+.chat-window { 
+    position: absolute; bottom: 85px; right: 0; 
+    width: 320px; height: 450px; 
+    background: white; border-radius: 24px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    display: flex; flex-direction: column; 
+    overflow: hidden; border: 1px solid #E0E0E0; 
+    transition: all 0.3s;
+
+        }
+        .chat-window { 
+    position: absolute; bottom: 85px; right: 0; 
+    width: 320px; height: 450px; 
+    background: white; border-radius: 24px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    display: flex; flex-direction: column; 
+    overflow: hidden; border: 1px solid #E0E0E0; 
+    transition: all 0.3s;
+
+        }
+       .chat-window.hidden { display: none; } /* Скрытие окна */
+        }
+        .chat-header {
+    background: #D4AF37 !important; /* Принудительно ставим золотой */
+    color: #1A1A1A !important;      /* Принудительно ставим темный текст */
+    padding: 16px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-top-left-radius: 24px; /* Чтобы углы были закругленные */
+    border-top-right-radius: 24px;
+}
+
+        .chat-close {
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: #1A1A1A;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 16px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #FAFAFA;
+        }
+        .message {
+            max-width: 85%;
+            padding: 8px 12px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .bot {
+            background: #F0F0F0;
+            color: #1A1A1A;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .user {
+            background: #D4AF37;
+            color: #1A1A1A;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-input-area {
+            display: flex;
+            border-top: 1px solid #E0E0E0;
+            background: white;
+        }
+        .chat-input {
+            flex: 1;
+            border: none;
+            padding: 12px;
+            font-family: inherit;
+            outline: none;
+            font-size: 14px;
+        }
+        .chat-send {
+            background: none;
+            border: none;
+            padding: 0 16px;
+            font-weight: 600;
+            color: #D4AF37;
+            cursor: pointer;
+        }
+        .quick-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .quick-btn {
+            background: #F0F0F0;
+            border: 1px solid #DDD;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .quick-btn:hover {
+            background: #D4AF37;
+            color: white;
+        }
+</html>
+/* Обновленная кнопка с врачом */
+.chat-toggle { 
+    width: 70px; 
+    height: 70px; 
+    background-color: #D4AF37; 
+    background-image: url('doctor.png'); /* Путь к фото врача */
+    background-size: cover; 
+    background-position: center;
+    border-radius: 50%; 
+    cursor: pointer; 
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2); 
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+    font-size: 0; /* Прячем текст/робота, если он там остался */
+}
+
+.chat-toggle:hover { transform: scale(1.1); }
+
+/* Окно чата (убедитесь, что эти стили есть) */
+.chat-window { 
+    position: absolute; bottom: 85px; right: 0; 
+    width: 320px; height: 450px; 
+    background: white; border-radius: 24px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    display: flex; flex-direction: column; 
+    overflow: hidden; border: 1px solid #E0E0E0; 
+    transition: all 0.3s;
+}
+
+.chat-window.hidden { display: none; } /* Скрытие окна */
+
+/* Стили сообщений */
+.message.bot { background: #F0F0F0; align-self: flex-start; border-radius: 15px 15px 15px 4px; padding: 10px; margin: 5px 0; }
+.message.user { background: #D4AF37; color: white; align-self: flex-end; border-radius: 15px 15px 4px 15px; padding: 10px; margin: 5px 0; }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">GLOBAL <span>TREND</span></div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="products.html">Продукция</a>
+                <a href="buy.html">Где купить</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badge">Luxury Life — Будь в тренде!</div>
+                <h1>Задаем тренды, <br> меняем мир</h1>
+                <p>Инновационные продукты для здоровья и красоты. Станьте частью глобального успеха вместе с Global Trend.</p>
+                <div class="btn-group">
+                    <a href="products.html" class="btn-primary">Исследовать продукцию</a>
+                    <a href="buy.html" class="btn-outline">Где приобрести</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="benefits">
+            <div class="container">
+                <h2 class="section-title">Почему <span>Global Trend</span></h2>
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-icon">⚡</div>
+                        <h3>Энергия и здоровье</h3>
+                        <p>Натуральные составы для активной жизни и восстановления ресурсов организма.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">✨</div>
+                        <h3>Красота без компромиссов</h3>
+                        <p>Инновационные формулы для сияющей кожи и естественного омоложения.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🌱</div>
+                        <h3>Натуральные компоненты</h3>
+                        <p>Безопасные, экологичные ингредиенты — забота о вас и природе.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🏆</div>
+                        <h3>Премиум качество</h3>
+                        <p>Стандарты «люкс» и доверие покупателей по всему миру.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Начните свой путь к успеху</h2>
+                <p>Присоединяйтесь к партнерской программе или станьте нашим клиентом — выбирайте лучшее для себя и близких.</p>
+                <a href="products.html" class="btn-primary">Каталог продукции</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Global Trend. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- AI Consultant Widget -->
+   <!-- AI Consultant Widget -->
+<div class="ai-chatbot">
+    <!-- Кнопка теперь пустая внутри, так как фото стоит фоном в CSS -->
+    <div class="chat-toggle" id="chatToggle"></div> 
+    
+    <div class="chat-window hidden" id="chatWindow">
+        <div class="chat-header" style="background-color: #D4AF37 !important; color: #1A1A1A !important; display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 16px !important; font-weight: bold !important;">
+    AI Консультант
+    <button class="chat-close" id="chatClose" style="background: none; border: none; font-size: 20px; cursor: pointer;">✕</button>
+</div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">Здравствуйте! Я AI-помощник Global Trend. Чем могу помочь? 😊</div>
+            <div class="quick-buttons" id="quickButtons">
+                <div class="quick-btn" data-question="Что такое Global Trend?">Что такое Global Trend?</div>
+                <div class="quick-btn" data-question="Какие у вас продукты?">Какие у вас продукты?</div>
+                <div class="quick-btn" data-question="Где купить?">Где купить?</div>
+                <div class="quick-btn" data-question="Доставка">Доставка</div>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Напишите сообщение...">
+            <button class="chat-send" id="chatSend">➤</button>
+        </div>
+    </div>
+</div>
+
+    <script>
+        // AI логика ответов
+        const botAnswers = {
+            "привет": "Здравствуйте! Задайте свой вопрос о продукции или партнёрстве.",
+            "что такое global trend": "Global Trend — это международная компания, предлагающая премиальные продукты для здоровья, красоты и активного образа жизни.",
+            "какие у вас продукты": "У нас есть: Vitality Lux, Perfecto Lux, Energy Lux, Immuno Lux, Luxury Day/Night паста, Harmony Lux и другие. Подробнее на странице 'Продукция'.",
+            "где купить": "Вы можете оставить заявку на странице 'Где купить', либо написать нам на почту или в мессенджеры. Также доступны маркетплейсы Wildberries, Ozon.",
+            "доставка": "Доставка осуществляется по всей России и СНГ. Сроки и стоимость уточняйте у менеджеров при оформлении заказа.",
+            "цена": "Цены варьируются от 2200 до 3600 рублей в зависимости от продукта. Актуальные цены смотрите в карточках товаров.",
+            "партнерство": "У нас есть партнерская программа. Оставьте заявку, и наш менеджер свяжется для обсуждения условий.",
+            "возврат": "Гарантия качества. Возврат возможен в течение 14 дней при сохранении товарного вида."
+        };
+        
+        function getBotAnswer(message) {
+            const lowerMsg = message.toLowerCase().trim();
+            for (let key in botAnswers) {
+                if (lowerMsg.includes(key)) {
+                    return botAnswers[key];
+                }
+            }
+            return "Спасибо за вопрос! Напишите нам на email globaltrendcompany@gmail.com или позвоните +7 707 321 21 21 — наши специалисты ответят точнее.";
+        }
+        
+        const chatWindow = document.getElementById('chatWindow');
+        const chatToggle = document.getElementById('chatToggle');
+        const chatClose = document.getElementById('chatClose');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        
+        function addMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${sender}`;
+            msgDiv.innerText = text;
+            chatMessages.insertBefore(msgDiv, document.getElementById('quickButtons'));
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function botReply(text) {
+            setTimeout(() => {
+                addMessage(text, 'bot');
+            }, 300);
+        }
+        
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('hidden');
+        });
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.add('hidden');
+        });
+        
+        function handleUserMessage() {
+            const msg = chatInput.value.trim();
+            if (msg === "") return;
+            addMessage(msg, 'user');
+            const answer = getBotAnswer(msg);
+            botReply(answer);
+            chatInput.value = "";
+            // показать после ответа опять быстрые кнопки? они всегда видны
+        }
+        
+        chatSend.addEventListener('click', handleUserMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleUserMessage();
+        });
+        
+        // Обработка быстрых кнопок
+        const quickBtns = document.querySelectorAll('.quick-btn');
+        quickBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const question = btn.getAttribute('data-question');
+                if (question) {
+                    addMessage(question, 'user');
+                    const answer = getBotAnswer(question);
+                    botReply(answer);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

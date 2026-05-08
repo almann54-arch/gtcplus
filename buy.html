@@ -1,0 +1,226 @@
+<!-- where-to-buy.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Где купить | Global Trend</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #F5F5F7; color: #1A1A1A; line-height: 1.5; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .header { position: sticky; top: 0; background-color: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.1); z-index: 100; padding: 20px 0; }
+        .header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .logo { font-size: 28px; font-weight: 700; color: #1A1A1A; }
+        .logo span { color: #D4AF37; }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a { color: #1A1A1A; text-decoration: none; font-weight: 500; transition: color 0.25s; }
+        .nav-links a:hover, .nav-links a.active { color: #D4AF37; }
+        .page-header { padding: 60px 0 30px; text-align: center; }
+        .page-header h1 { font-size: 48px; font-weight: 700; margin-bottom: 16px; }
+        .page-header p { color: #4A4A4A; max-width: 680px; margin: 0 auto; font-size: 18px; }
+        .buy-options { padding: 20px 0 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+        .form-card, .contacts-list { background: #FFFFFF; border-radius: 32px; padding: 32px; border: 1px solid #E0E0E0; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+        .form-card h3, .contacts-list h3 { font-size: 28px; margin-bottom: 8px; }
+        .form-card h3 span { color: #D4AF37; }
+        .form-card p { color: #555; margin-bottom: 28px; }
+        .input-group { margin-bottom: 20px; }
+        input, textarea { width: 100%; background: #F9F9FB; border: 1px solid #DDD; padding: 14px 18px; border-radius: 28px; font-family: inherit; color: #1A1A1A; font-size: 16px; outline: none; transition: 0.2s; }
+        input:focus, textarea:focus { border-color: #D4AF37; }
+        textarea { min-height: 100px; resize: vertical; }
+        .submit-btn { background: #D4AF37; color: #1A1A1A; border: none; padding: 14px 28px; border-radius: 40px; font-weight: 600; font-size: 16px; cursor: pointer; width: 100%; transition: 0.25s; }
+        .submit-btn:hover { opacity: 0.9; transform: scale(0.98); }
+        .contact-item { margin-bottom: 24px; display: flex; gap: 12px; align-items: center; }
+        .contact-icon { font-size: 24px; min-width: 40px; color: #D4AF37; }
+        .marketplaces { margin-top: 32px; }
+        .marketplaces h4 { color: #D4AF37; margin-bottom: 16px; font-size: 18px; }
+        .market-list { display: flex; gap: 20px; flex-wrap: wrap; }
+        .market-badge { background: #F0F0F0; padding: 8px 20px; border-radius: 40px; font-weight: 500; font-size: 15px; border: 1px solid #DDD; }
+        .cities { background: #FFFFFF; margin-top: 20px; border-radius: 32px; padding: 32px; text-align: center; border: 1px solid #E0E0E0; }
+        .cities h3 { font-size: 26px; margin-bottom: 16px; }
+        .city-tag { display: inline-block; background: #F0F0F0; padding: 8px 20px; margin: 6px; border-radius: 40px; font-size: 14px; border: 1px solid #DDD; }
+        .footer { padding: 48px 0 24px; text-align: center; color: #777; font-size: 14px; border-top: 1px solid #E0E0E0; margin-top: 40px; }
+        /* AI консультант (стили как ранее) */
+        .ai-chatbot { position: fixed; bottom: 24px; right: 24px; z-index: 1000; }
+        .chat-toggle { 
+    width: 70px; 
+    height: 70px; 
+    background-color: #D4AF37; 
+    background-image: url('doctor.png'); /* Путь к фото врача */
+    background-size: cover; 
+    background-position: center;
+    border-radius: 50%; 
+    cursor: pointer; 
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2); 
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+    font-size: 0; /* Прячем текст/робота, если он там остался */
+}
+
+.chat-toggle:hover { transform: scale(1.1); }
+
+        /* Окно чата (убедитесь, что эти стили есть) */
+.chat-window { 
+    position: absolute; bottom: 85px; right: 0; 
+    width: 320px; height: 450px; 
+    background: white; border-radius: 24px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    display: flex; flex-direction: column; 
+    overflow: hidden; border: 1px solid #E0E0E0; 
+    transition: all 0.3s;
+}
+
+.chat-window.hidden { display: none; } /* Скрытие окна */
+
+        .chat-header { background: #D4AF37; color: #1A1A1A; padding: 16px; font-weight: 600; display: flex; justify-content: space-between; }
+        .chat-close { cursor: pointer; background: none; border: none; font-size: 20px; }
+        .chat-messages { flex: 1; padding: 16px; overflow-y: auto; background: #FAFAFA; display: flex; flex-direction: column; gap: 12px; }
+        .message { max-width: 85%; padding: 8px 12px; border-radius: 18px; font-size: 14px; }
+        .bot { background: #F0F0F0; color: #1A1A1A; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .user { background: #D4AF37; color: #1A1A1A; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .chat-input-area { display: flex; border-top: 1px solid #E0E0E0; background: white; }
+        .chat-input { flex: 1; border: none; padding: 12px; font-family: inherit; outline: none; }
+        .chat-send { background: none; border: none; padding: 0 16px; font-weight: 600; color: #D4AF37; cursor: pointer; }
+        .quick-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .quick-btn { background: #F0F0F0; border: 1px solid #DDD; border-radius: 20px; padding: 6px 12px; font-size: 12px; cursor: pointer; }
+        @media (max-width: 880px) { .buy-options { grid-template-columns: 1fr; } .page-header h1 { font-size: 36px; } .header .container { flex-direction: column; } }
+/* Стили сообщений */
+.message.bot { background: #F0F0F0; align-self: flex-start; border-radius: 15px 15px 15px 4px; padding: 10px; margin: 5px 0; }
+.message.user { background: #D4AF37; color: white; align-self: flex-end; border-radius: 15px 15px 4px 15px; padding: 10px; margin: 5px 0; }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">GLOBAL <span>TREND</span></div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="products.html">Продукция</a>
+                <a href="where-to-buy.html" class="active">Где купить</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="page-header"><div class="container"><h1>Где приобрести</h1><p>Оформите заказ, свяжитесь с нами или найдите ближайшее представительство</p></div></div>
+        <div class="container"><div class="buy-options">
+            <div class="form-card"><h3>Заявка на <span>продукцию</span></h3><p>Оставьте контакты, и специалист подберет удобный способ доставки и проконсультирует.</p>
+                <form action="#" method="post"><div class="input-group"><input type="text" placeholder="Ваше имя" required></div><div class="input-group"><input type="tel" placeholder="Телефон" required></div><div class="input-group"><input type="email" placeholder="Email"></div><div class="input-group"><textarea placeholder="Комментарий / какой продукт интересует"></textarea></div><button type="submit" class="submit-btn">Отправить заявку</button></form>
+            </div>
+            <div><div class="contacts-list"><h3>Контакты</h3><div class="contact-item"><div class="contact-icon">📧</div><p>almann54@gmail.com</p></div><div class="contact-item"><div class="contact-icon"></div><div class="marketplaces"></div></div></div>
+                <div class="cities"><h3>Представительства в городах</h3><div><span class="city-tag">Москва</span><span class="city-tag">Санкт-Петербург</span><span class="city-tag">Алматы</span><span class="city-tag">Нур-Султан</span><span class="city-tag">Караганда</span><span class="city-tag">Екатеринбург</span><span class="city-tag">Новосибирск</span></div><p style="margin-top: 24px; font-size: 14px; color: #aaa;">* Доставка по всей России и СНГ — уточняйте условия у менеджеров.</p></div>
+            </div>
+        </div></div>
+    </main>
+    <footer class="footer"><div class="container"><p>© 2026 Global Trend. Все права защищены.</p></div></footer>
+
+    <!-- AI Consultant -->
+  <!-- AI Consultant Widget -->
+<div class="ai-chatbot">
+    <!-- Кнопка теперь пустая внутри, так как фото стоит фоном в CSS -->
+    <div class="chat-toggle" id="chatToggle"></div> 
+    
+    <div class="chat-window hidden" id="chatWindow">
+        <div class="chat-header">
+            AI Консультант
+            <button class="chat-close" id="chatClose">✕</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">Здравствуйте! Я AI-помощник Global Trend. Чем могу помочь? 😊</div>
+            <div class="quick-buttons" id="quickButtons">
+                <div class="quick-btn" data-question="Что такое Global Trend?">Что такое Global Trend?</div>
+                <div class="quick-btn" data-question="Какие у вас продукты?">Какие у вас продукты?</div>
+                <div class="quick-btn" data-question="Где купить?">Где купить?</div>
+                <div class="quick-btn" data-question="Доставка">Доставка</div>
+                <div class="quick-btn" data-question="Цена">Цена</div>
+                <div class="quick-btn" data-question="Партнерство">Партнерство</div>
+                <div class="quick-btn" data-question="Возврат">Возврат</div>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Напишите сообщение...">
+            <button class="chat-send" id="chatSend">➤</button>
+        </div>
+    </div>
+</div>
+
+  <script>
+// Тот же список ответов
+const botAnswers = {
+    "привет": "Здравствуйте! Задайте свой вопрос о продукции или партнёрстве.",
+    "что такое global trend": "Global Trend — Global Trend — это международная компания, предлагающая премиальные продукты для здоровья и активного образа жизни.",
+    "какие у вас продукты": "У нас есть: Vitality Lux, Perfecto Lux, Energy Lux, Immuno Lux и другие. Подробнее в каталоге!",
+    "где купить": "Вы можете оставить заявку на этой странице или в мессенджере.",
+    "доставка": "Доставка осуществляется по всей России и СНГ.",
+    "цена": "Цены варьируются от 1200 до 24000 рублей.",
+    "партнерство": "У нас есть партнерская программа.",
+    "возврат": "Качество гарантировано!"
+};
+
+function getBotAnswer(message) {
+    const lowerMsg = message.toLowerCase().trim();
+    for (let key in botAnswers) {
+        if (lowerMsg.includes(key)) return botAnswers[key];
+    }
+    return "Спасибо за вопрос! Позвоните +7 707 321 21 21 — мы ответим точнее.";
+}
+
+const chatWindow = document.getElementById('chatWindow');
+const chatToggle = document.getElementById('chatToggle');
+const chatClose = document.getElementById('chatClose');
+const chatMessages = document.getElementById('chatMessages');
+const chatInput = document.getElementById('chatInput');
+const chatSend = document.getElementById('chatSend');
+
+function addMessage(text, sender) {
+    if(!chatMessages) return;
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${sender}`;
+    msgDiv.innerText = text;
+    // Вставляем ПЕРЕД кнопками, если они есть
+    const qButtons = document.getElementById('quickButtons');
+    if (qButtons) {
+        chatMessages.insertBefore(msgDiv, qButtons);
+    } else {
+        chatMessages.appendChild(msgDiv);
+    }
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function botReply(text) {
+    setTimeout(() => addMessage(text, 'bot'), 300);
+}
+
+// Открытие/Закрытие
+if(chatToggle) chatToggle.onclick = () => chatWindow.classList.toggle('hidden');
+if(chatClose) chatClose.onclick = () => chatWindow.classList.add('hidden');
+
+function handleUserMessage() {
+    const msg = chatInput.value.trim();
+    if (msg === "") return;
+    addMessage(msg, 'user');
+    botReply(getBotAnswer(msg));
+    chatInput.value = "";
+}
+
+if(chatSend) chatSend.onclick = handleUserMessage;
+if(chatInput) chatInput.onkeypress = (e) => { if (e.key === 'Enter') handleUserMessage(); };
+
+// Быстрые кнопки
+document.querySelectorAll('.quick-btn').forEach(btn => {
+    btn.onclick = () => {
+        const question = btn.getAttribute('data-question');
+        addMessage(question, 'user');
+        botReply(getBotAnswer(question));
+    };
+});
+</script>
+
+</body>
+</html>

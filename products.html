@@ -1,0 +1,376 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Trend - Продукция</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #F5F5F7; color: #1A1A1A; line-height: 1.5; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Шапка */
+        .header { position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.1); z-index: 100; padding: 20px 0; }
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: 700; color: #1A1A1A; text-decoration: none; }
+        .logo span { color: #D4AF37; font-weight: 400; }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a { color: #1A1A1A; text-decoration: none; font-weight: 500; transition: color 0.25s; }
+        .nav-links a:hover, .nav-links a.active { color: #D4AF37; }
+        
+        /* Сетка товаров */
+        .products-section { padding: 60px 0; }
+        .products-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 30px; 
+        }
+
+        /* Карточка товара */
+        .product-card { 
+            background: #FFFFFF; 
+            border-radius: 28px; 
+            overflow: hidden; 
+            border: 1px solid #E0E0E0; 
+            transition: transform 0.2s, box-shadow 0.2s; 
+            display: flex;
+            flex-direction: column; /* Элементы внутри идут сверху вниз */
+        }
+        .product-card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0,0,0,0.05); border-color: #D4AF37; }
+
+        /* Блок с картинкой */
+        .product-img { 
+            background: #F8F8FA; 
+            height: 280px; /* Высота серой области */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 40px; /* ОТСТУПЫ: делают саму картинку меньше и аккуратнее */
+        }
+        .product-img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Картинка не обрезается */
+        }
+
+        /* Инфо блок */
+        .product-info { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-title { font-size: 22px; font-weight: 600; margin-bottom: 12px; }
+        .product-desc { font-size: 14px; color: #555; margin-bottom: 20px; flex-grow: 1; }
+        .product-price { font-size: 24px; font-weight: 700; color: #D4AF37; margin-bottom: 20px; }
+        
+        .btn-order { 
+            display: block; 
+            border: 1px solid #D4AF37; 
+            padding: 12px; 
+            text-align: center; 
+            border-radius: 40px; 
+            color: #D4AF37; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: 0.25s; 
+        }
+        .btn-order:hover { background: #D4AF37; color: #fff; }
+/* Кнопка чата с врачом */
+.ai-chatbot { position: fixed; bottom: 24px; right: 24px; z-index: 1000; }
+
+.chat-toggle { 
+    width: 70px; 
+    height: 70px; 
+    background-color: #D4AF37; 
+    background-image: url('doctor.png'); /* Проверьте, чтобы файл лежал в папке под этим именем */
+    background-size: cover; 
+    background-position: center;
+    border-radius: 50%; 
+    cursor: pointer; 
+    box-shadow: 0 6px 14px rgba(0,0,0,0.2); 
+    border: 3px solid white;
+    transition: transform 0.2s; 
+}
+
+.chat-toggle:hover { transform: scale(1.1); }
+
+/* Окно чата (по умолчанию скрыто) */
+.chat-window { 
+    position: absolute; bottom: 85px; right: 0; 
+    width: 320px; height: 450px; 
+    background: white; border-radius: 24px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    display: none; /* Скрыто до нажатия */
+    flex-direction: column; overflow: hidden; border: 1px solid #E0E0E0; 
+}
+
+.chat-header { background: #D4AF37; color: #1A1A1A; padding: 16px; font-weight: 600; }
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">GLOBAL <span>TREND</span></a>
+            <nav class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="products.html" class="active">Продукция</a>
+                <a href="buy.html">Где купить</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container products-section">
+        <div class="products-grid">
+            
+                            
+            <!-- Карточка 1: Vitality Lux -->
+            <div class="product-card">
+                <div class="product-img"><img src="vitality lux.webp" alt="Vitality Lux"></div>
+                <div class="product-info">
+                    <div class="product-title">Vitality Lux</div>
+                    <div class="product-desc">Нано-бальзам, повышающий защитные силы организма и ускоряющий восстановление.</div>
+                    <div class="product-price">2 400 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+
+            <!-- Карточка 2: Perfecto Lux -->
+            <div class="product-card">
+                <div class="product-img">
+                    <!-- Замените на имя файла вашей картинки для Perfecto -->
+                    <img src="perfecto lux.webp" alt="Perfecto Lux"> 
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Perfecto Lux</div>
+                    <div class="product-desc">Интенсивное клеточное питание, омоложение и улучшение тонуса кожи.</div>
+                    <div class="product-price">2 400 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+
+            <!-- Карточка 3: Smart Lux -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="smart lux.webp" alt="Smart Lux">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Smart Lux</div>
+                    <div class="product-desc">Smart Lux – переключатель вашего мозга: ясность днём и сон ночью.</div>
+                    <div class="product-price">2 400 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+                
+            <!-- Карточка 4: Harmony Lux -->
+            <div class="product-card">
+                <div class="product-img"><img src="harmony lux.webp" alt="Harmony Lux"></div>
+                <div class="product-info">
+                    <div class="product-title">Harmony Lux</div>
+                    <div class="product-desc">Поддерживает гормональный баланс и нормализует обмен веществ.</div>
+                    <div class="product-price">2 400 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+
+            <!-- Карточка 5: Pavlov Spring -->
+            <div class="product-card">
+                <div class="product-img">
+                    <!-- Замените на имя файла вашей картинки для Perfecto -->
+                    <img src="pavlov spring.webp" alt="Pavlov Spring"> 
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Pavlov Spring</div>
+                    <div class="product-desc">Высококонцентрированный растительный комплекс для иммунитета, печени и общего укрепления.</div>
+                    <div class="product-price">21 600 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+
+            <!-- Карточка 6: Immuno Lux -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="immuno lux.webp" alt="Immuno Lux">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Immuno Lux</div>
+                    <div class="product-desc">Натуральная поддержка защитных сил организма.Сильный иммунитет круглый год.</div>
+                    <div class="product-price">24 000 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+                
+            <!-- Карточка 7: Spray масло May -->
+            <div class="product-card">
+                <div class="product-img"><img src="oil may.png" alt="Spray масло May"></div>
+                <div class="product-info">
+                    <div class="product-title">Spray масло May</div>
+                    <div class="product-desc">Это словно мини-SPA, которое всегда с вами. Здоровье и красота в одном распылении.</div>
+                    <div class="product-price">4 800 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+
+            <!-- Карточка 8: Wellness Lux -->
+            <div class="product-card">
+                <div class="product-img">
+                    <!-- Замените на имя файла вашей картинки для Perfecto -->
+                    <img src="wellness lux.png" alt="Wellness Lux"> 
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Wellness Lux</div>
+                    <div class="product-desc">Природный детокс и гармония организма.</div>
+                    <div class="product-price">2 400 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+
+            <!-- Карточка 9: Energy Lux -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="energy lux.webp" alt="Energy Lux">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Energy Lux</div>
+                    <div class="product-desc">Спрей для быстрого восполнения энергии и концентрации.</div>
+                    <div class="product-price">2 400 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+                
+            <!-- Карточка 10: Luxury Day -->
+            <div class="product-card">
+                <div class="product-img"><img src="luxury day.webp" alt="Luxury Day"></div>
+                <div class="product-info">
+                    <div class="product-title">Luxury Day</div>
+                    <div class="product-desc">Зубная паста, созданная для комплексного ухода за полостью рта в дневное время.</div>
+                    <div class="product-price">1 200 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+
+            <!-- Карточка 11: Luxury Night -->
+            <div class="product-card">
+                <div class="product-img">
+                    <!-- Замените на имя файла вашей картинки -->
+                    <img src="luxury night.webp" alt="Luxury Night"> 
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Luxury Night</div>
+                    <div class="product-desc">Зубная паста, созданная для комплексного ухода за полостью рта в ночное время.</div>
+                    <div class="product-price">1 200 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+
+            <!-- Карточка 12: Delight Lux New Me -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="delight lux.webp" alt="Delight Lux New Me">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Delight Lux New Me</div>
+                    <div class="product-desc">Стань неотразимой и желанной каждый день.</div>
+                    <div class="product-price">3 600 ₽</div>
+                    <a href="buy.html" class="btn-order">Где купить</a>
+                </div>
+            </div>
+
+      
+            <!-- Сюда можно добавить вторую и третью карточки аналогично первой -->
+
+        </div>
+    </div>
+    <!-- Виджет консультанта -->
+   <div class="ai-chatbot">
+    <div class="chat-toggle" id="chatToggle" style="width: 70px; height: 70px; background-color: #D4AF37; background-image: url('doctor.png'); background-size: cover; background-position: center; border-radius: 50%; cursor: pointer; box-shadow: 0 6px 14px rgba(0,0,0,0.2); border: 3px solid white; position: fixed; bottom: 24px; right: 24px; z-index: 1000;"></div>
+    
+    <div class="chat-window hidden" id="chatWindow" style="position: fixed; bottom: 100px; right: 24px; width: 320px; height: 450px; background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: none; flex-direction: column; overflow: hidden; border: 1px solid #E0E0E0; z-index: 1001;">
+        <div class="chat-header" style="background-color: #D4AF37 !important; color: #1A1A1A !important; display: flex !important; justify-content: space-between !important; align-items: center !important; padding: 16px !important; font-weight: bold !important;">
+            AI Консультант
+            <button class="chat-close" id="chatClose" style="background: none; border: none; font-size: 20px; cursor: pointer;">✕</button>
+        </div>
+        <div class="chat-messages" id="chatMessages" style="flex: 1; padding: 16px; overflow-y: auto; background: #FAFAFA; display: flex; flex-direction: column; gap: 12px;">
+            <div class="message bot" style="background: #F0F0F0; padding: 10px; border-radius: 15px 15px 15px 4px; align-self: flex-start;">Здравствуйте! Я AI-помощник. Чем могу помочь?</div>
+           <div class="quick-buttons" id="quickButtons" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+    <div class="quick-btn" data-question="Что такое Global Trend?" style="background: #eee; padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; border: 1px solid #ddd;">Что такое Global Trend?</div>
+    <div class="quick-btn" data-question="Какие у вас продукты?" style="background: #eee; padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; border: 1px solid #ddd;">Какие у вас продукты?</div>
+    <div class="quick-btn" data-question="Где купить?" style="background: #eee; padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; border: 1px solid #ddd;">Где купить?</div>
+    <div class="quick-btn" data-question="Доставка" style="background: #eee; padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; border: 1px solid #ddd;">Доставка</div>
+
+        </div>
+        <div class="chat-input-area" style="display: flex; border-top: 1px solid #eee; padding: 10px;">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Напишите..." style="flex: 1; border: none; outline: none;">
+            <button class="chat-send" id="chatSend" style="background: none; border: none; color: #D4AF37; font-weight: bold; cursor: pointer;">➤</button>
+        </div>
+    </div>
+</div>
+<script>
+    const chatWindow = document.getElementById('chatWindow');
+    const chatToggle = document.getElementById('chatToggle');
+    const chatClose = document.getElementById('chatClose');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+    const chatMessages = document.getElementById('chatMessages');
+
+    const botAnswers = {
+        "что такое global trend": "Global Trend — это международная компания, предлагающая премиальные продукты для здоровья и активного образа жизни.",
+        "какие у вас продукты": "У нас есть: Vitality Lux, Perfecto Lux, Energy Lux, Immuno Lux и другие. Подробнее в каталоге выше!",
+        "где купить": "Вы можете оставить заявку на странице 'Где купить' или написать нам в мессенджеры.",
+        "доставка": "Доставка осуществляется по всей России и СНГ. Уточняйте сроки у менеджера."
+    };
+
+    // Открытие и закрытие окна
+    chatToggle.onclick = () => {
+        chatWindow.style.display = (chatWindow.style.display === 'none' || chatWindow.style.display === '') ? 'flex' : 'none';
+    };
+    chatClose.onclick = () => chatWindow.style.display = 'none';
+
+    // Функция поиска ответа
+    function getSmartAnswer(message) {
+        const lowerMsg = message.toLowerCase().trim().replace('?', '');
+        for (let key in botAnswers) {
+            if (lowerMsg.includes(key)) return botAnswers[key];
+        }
+        return "Спасибо за вопрос! Наш специалист скоро ответит вам подробнее.";
+    }
+
+    // Функция добавления сообщения на экран
+    function addMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.innerText = text;
+        msgDiv.style.padding = "10px";
+        msgDiv.style.borderRadius = "15px";
+        msgDiv.style.margin = "5px 0";
+        msgDiv.style.maxWidth = "85%";
+        if (sender === 'user') {
+            msgDiv.style.background = "#D4AF37"; msgDiv.style.color = "white"; msgDiv.style.alignSelf = "flex-end";
+        } else {
+            msgDiv.style.background = "#F0F0F0"; msgDiv.style.alignSelf = "flex-start";
+        }
+        // Вставляем перед блоком кнопок
+        chatMessages.insertBefore(msgDiv, document.getElementById('quickButtons'));
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Обработка отправки вручную
+    function handleSend() {
+        const msg = chatInput.value.trim();
+        if (!msg) return;
+        addMessage(msg, 'user');
+        chatInput.value = '';
+        setTimeout(() => addMessage(getSmartAnswer(msg), 'bot'), 400);
+    }
+
+    chatSend.onclick = handleSend;
+    chatInput.onkeypress = (e) => { if (e.key === 'Enter') handleSend(); };
+
+    // Обработка кнопок (ОДИН РАЗ)
+    document.querySelectorAll('.quick-btn').forEach(btn => {
+        btn.onclick = () => {
+            const question = btn.innerText;
+            addMessage(question, 'user');
+            setTimeout(() => addMessage(getSmartAnswer(question), 'bot'), 400);
+        };
+    });
+</script>
+
+
+</body>
+</html>
