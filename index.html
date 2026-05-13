@@ -475,11 +475,43 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 Global Trend. Все права защищены.</p>
+    <footer class="footer" style="background: #FFFFFF; padding: 60px 0 30px; border-top: 1px solid #E0E0E0; margin-top: 80px;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left; margin-bottom: 40px;">
+            
+            <!-- Колонка 1: О бренде -->
+            <div>
+                <div class="logo" style="margin-bottom: 20px;">GLOBAL <span>TREND</span></div>
+                <p style="color: #777; font-size: 14px; line-height: 1.6;">Инновационные продукты для вашего здоровья и долголетия. Качество, подтвержденное временем.</p>
+            </div>
+
+            <!-- Колонка 2: Навигация -->
+            <div>
+                <h4 style="margin-bottom: 20px; font-size: 18px; color: #1A1A1A;">Навигация</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;"><a href="index.html" style="color: #777; text-decoration: none; font-size: 14px;">Главная</a></li>
+                    <li style="margin-bottom: 10px;"><a href="products.html" style="color: #777; text-decoration: none; font-size: 14px;">Продукция</a></li>
+                    <li style="margin-bottom: 10px;"><a href="where-to-buy.html" style="color: #777; text-decoration: none; font-size: 14px;">Где купить</a></li>
+                </ul>
+            </div>
+
+            <!-- Колонка 3: Юридическая информация -->
+            <div>
+                <h4 style="margin-bottom: 20px; font-size: 18px; color: #1A1A1A;">Документы</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;"><a href="privacy.html" style="color: #777; text-decoration: none; font-size: 14px;">Политика конфиденциальности</a></li>
+                    
+                </ul>
+            </div>
+
         </div>
-    </footer>
+
+        <!-- Нижняя часть: Копирайт -->
+        <div style="border-top: 1px solid #F0F0F0; padding-top: 24px; text-align: center;">
+            <p style="color: #999; font-size: 13px;">&copy; 2026 GLOBAL TREND. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
 
     <!-- AI Consultant Widget -->
    <!-- AI Consultant Widget -->
@@ -529,7 +561,7 @@
                     return botAnswers[key];
                 }
             }
-            return "Спасибо за вопрос! Напишите нам на email globaltrendcompany@gmail.com или позвоните +7 707 321 21 21 — наши специалисты ответят точнее.";
+            return "Спасибо за вопрос! Напишите нам на email allmann54@gmail.com — наши специалисты ответят точнее.";
         }
         
         const chatWindow = document.getElementById('chatWindow');

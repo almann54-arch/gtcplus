@@ -116,8 +116,9 @@
     
         <!-- Одной строки достаточно -->
         <form action="https://formspree.io/f/xrejyoek" method="POST">
-    <input type="hidden" name="_next" value="thanks.html">
-      
+        <input type="hidden" name="_next" value="thanks.html">
+        <input type="text" name="_gotcha" style="display:none" />
+
         <div class="input-group">
             <input type="text" name="name" placeholder="Ваше имя" required>
         </div>
@@ -130,6 +131,14 @@
         <div class="input-group">
             <textarea name="message" placeholder="Комментарий / какой продукт интересует"></textarea>
         </div>
+ <!-- БЛОК С ГАЛОЧКОЙ -->
+    <div style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+        <input type="checkbox" id="privacy" name="privacy_agreement" required style="width: 18px; height: 18px; cursor: pointer; margin-top: 3px;">
+        <label for="privacy" style="font-size: 13px; color: #555; cursor: pointer; line-height: 1.4;">
+            Я согласен на обработку персональных данных в соответствии с 
+            <a href="privacy.html" target="_blank" style="color: #D4AF37; text-decoration: underline;">политикой конфиденциальности</a>
+        </label>
+ </div>
         <button type="submit" class="submit-btn">Отправить заявку</button>
     </form>
 </div>
@@ -138,7 +147,43 @@
             </div>
         </div></div>
     </main>
-    <footer class="footer"><div class="container"><p>© 2026 Global Trend. Все права защищены.</p></div></footer>
+   <footer class="footer" style="background: #FFFFFF; padding: 60px 0 30px; border-top: 1px solid #E0E0E0; margin-top: 80px;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left; margin-bottom: 40px;">
+            
+            <!-- Колонка 1: О бренде -->
+            <div>
+                <div class="logo" style="margin-bottom: 20px;">GLOBAL <span>TREND</span></div>
+                <p style="color: #777; font-size: 14px; line-height: 1.6;">Инновационные продукты для вашего здоровья и долголетия. Качество, подтвержденное временем.</p>
+            </div>
+
+            <!-- Колонка 2: Навигация -->
+            <div>
+                <h4 style="margin-bottom: 20px; font-size: 18px; color: #1A1A1A;">Навигация</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;"><a href="index.html" style="color: #777; text-decoration: none; font-size: 14px;">Главная</a></li>
+                    <li style="margin-bottom: 10px;"><a href="products.html" style="color: #777; text-decoration: none; font-size: 14px;">Продукция</a></li>
+                    
+                </ul>
+            </div>
+
+            <!-- Колонка 3: Юридическая информация -->
+            <div>
+                <h4 style="margin-bottom: 20px; font-size: 18px; color: #1A1A1A;">Документы</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 10px;"><a href="privacy.html" style="color: #777; text-decoration: none; font-size: 14px;">Политика конфиденциальности</a></li>
+                    
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Нижняя часть: Копирайт -->
+        <div style="border-top: 1px solid #F0F0F0; padding-top: 24px; text-align: center;">
+            <p style="color: #999; font-size: 13px;">&copy; 2026 GLOBAL TREND. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
 
     <!-- AI Consultant -->
   <!-- AI Consultant Widget -->
@@ -160,8 +205,7 @@
                 <div class="quick-btn" data-question="Доставка">Доставка</div>
                 <div class="quick-btn" data-question="Цена">Цена</div>
                 <div class="quick-btn" data-question="Партнерство">Партнерство</div>
-                <div class="quick-btn" data-question="Возврат">Возврат</div>
-            </div>
+                /div>
         </div>
         <div class="chat-input-area">
             <input type="text" class="chat-input" id="chatInput" placeholder="Напишите сообщение...">
@@ -179,8 +223,7 @@ const botAnswers = {
     "где купить": "Вы можете оставить заявку на этой странице или в мессенджере.",
     "доставка": "Доставка осуществляется по всей России и СНГ.",
     "цена": "Цены варьируются от 1200 до 24000 рублей.",
-    "партнерство": "У нас есть партнерская программа.",
-    "возврат": "Качество гарантировано!"
+    "партнерство": "У нас есть партнерская программа."    
 };
 
 function getBotAnswer(message) {
